@@ -105,15 +105,10 @@ export default function Hero() {
             {/* Ambient Backlight Aura Glow */}
             <div className="glow-shadow-backdrop" />
             
-            {/* Concentric Double Glowing Neon Rings */}
-            <div className="concentric-ring concentric-ring-1" />
-            <div className="concentric-ring concentric-ring-2" />
-            
-            {/* Technical Dotted Circular Orbits */}
-            <div className="dotted-orbit dotted-orbit-1" />
-            <div className="dotted-orbit dotted-orbit-2" />
+            {/* Custom Tech Dashboard Background Matrix Dots */}
+            <div className="tech-matrix-grid" />
 
-            {/* The Cyber-Neon Profile Photo Frame */}
+            {/* The Cyber-Neon Profile Photo Frame (Rounded Rectangular Overhaul) */}
             <div className="profile-photo-frame">
               <img 
                 src="/profile.jpg" 
@@ -126,9 +121,9 @@ export default function Hero() {
               />
             </div>
 
-            {/* Float Badge 1: React (Top Left) */}
-            <div className="glass-card float-badge badge-react float-slow-node">
-              <div className="float-badge-icon-wrapper tech-react">
+            {/* Float Widget 1: React Specialist (Top Left) */}
+            <div className="glass-card tech-widget widget-react float-slow-node">
+              <div className="widget-icon-wrapper react-blue">
                 <svg className="react-icon" viewBox="0 0 100 100" width="18" height="18">
                   <ellipse cx="50" cy="50" rx="8" ry="22" fill="none" stroke="#00f2fe" strokeWidth="2.5" transform="rotate(0 50 50)" />
                   <ellipse cx="50" cy="50" rx="8" ry="22" fill="none" stroke="#00f2fe" strokeWidth="2.5" transform="rotate(60 50 50)" />
@@ -136,20 +131,31 @@ export default function Hero() {
                   <circle cx="50" cy="50" r="5" fill="#00f2fe" />
                 </svg>
               </div>
-              <span className="float-badge-text">React</span>
+              <div className="widget-info">
+                <span className="widget-title">React Specialist</span>
+                <div className="widget-status">
+                  <span className="status-dot green animate-pulse" />
+                  <span className="status-text">Active System</span>
+                </div>
+              </div>
             </div>
 
-            {/* Float Badge 2: JavaScript (Mid Right) */}
-            <div className="glass-card float-badge badge-javascript float-medium-node">
-              <div className="float-badge-icon-wrapper tech-js">
+            {/* Float Widget 2: JavaScript ES6+ (Mid Right) */}
+            <div className="glass-card tech-widget widget-js float-medium-node">
+              <div className="widget-icon-wrapper js-yellow">
                 <div className="js-logo-box">JS</div>
               </div>
-              <span className="float-badge-text">JavaScript</span>
+              <div className="widget-info">
+                <span className="widget-title">ES6+ JavaScript</span>
+                <div className="widget-progress-track">
+                  <div className="widget-progress-fill" style={{ width: '90%' }} />
+                </div>
+              </div>
             </div>
 
-            {/* Float Badge 3: REST APIs (Bottom Center) */}
-            <div className="glass-card float-badge badge-rest float-slow-node">
-              <div className="float-badge-icon-wrapper tech-rest">
+            {/* Float Widget 3: REST APIs & JSON (Bottom Center) */}
+            <div className="glass-card tech-widget widget-rest float-slow-node">
+              <div className="widget-icon-wrapper rest-pink">
                 <svg className="rest-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#ff007f" strokeWidth="2.5">
                   <rect x="2" y="2" width="20" height="5" rx="1.5" />
                   <rect x="2" y="9.5" width="20" height="5" rx="1.5" />
@@ -159,7 +165,10 @@ export default function Hero() {
                   <circle cx="6" cy="19.5" r="0.75" fill="#ff007f" />
                 </svg>
               </div>
-              <span className="float-badge-text">REST APIs</span>
+              <div className="widget-info">
+                <span className="widget-title">REST APIs & JSON</span>
+                <span className="widget-badge pink">High Performance</span>
+              </div>
             </div>
           </div>
         </div>

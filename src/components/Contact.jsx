@@ -50,13 +50,31 @@ export default function Contact() {
     if (!formData.name || !formData.email || !formData.message) return;
 
     setIsSubmitting(true);
-    // Simulate API request delay
+    
+    // Construct pre-filled email body and subject
+    const subject = encodeURIComponent(formData.subject || `Inquiry from ${formData.name}`);
+    const body = encodeURIComponent(
+      `Name: ${formData.name}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Message:\n${formData.message}`
+    );
+    
+    const mailtoUrl = `mailto:vardhanbabuvendi@gmail.com?subject=${subject}&body=${body}`;
+    const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=vardhanbabuvendi@gmail.com&su=${subject}&body=${body}`;
+
+    // Simulate transmission loader and trigger compose tab redirection
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitSuccess(true);
+      
+      // Attempt to launch Gmail compose window in a new tab, fallback to standard mailto link
+      if (!window.open(gmailUrl, '_blank')) {
+        window.location.href = mailtoUrl;
+      }
+      
       setFormData({ name: '', email: '', subject: '', message: '' });
       setTimeout(() => setSubmitSuccess(false), 5000);
-    }, 1500);
+    }, 1000);
   };
 
   return (

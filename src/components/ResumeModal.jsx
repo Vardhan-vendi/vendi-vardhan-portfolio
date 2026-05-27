@@ -1,8 +1,8 @@
-import { X, Printer, Mail, Phone, MapPin } from 'lucide-react';
+import { X, Printer, Mail, Phone, MapPin, Award, CheckCircle2, ChevronRight } from 'lucide-react';
 import { useEffect } from 'react';
 
 export default function ResumeModal({ isOpen, onClose }) {
-  // Prevent background scrolling when modal is open
+  // Prevent background scrolling when modal is active
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add('resume-modal-active');
@@ -20,177 +20,202 @@ export default function ResumeModal({ isOpen, onClose }) {
 
   return (
     <div className="resume-modal-overlay no-print" onClick={onClose}>
-      {/* The Invitation Resume Card container */}
       <div 
-        className="invitation-resume-card" 
+        className="infographic-resume-dashboard" 
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Decorative Golden Corner Caps */}
-        <div className="corner-cap corner-tl" />
-        <div className="corner-cap corner-tr" />
-        <div className="corner-cap corner-bl" />
-        <div className="corner-cap corner-br" />
-
-        {/* Modal Controls */}
-        <div className="resume-modal-controls">
-          <button 
-            className="control-btn print-btn" 
-            onClick={handlePrint}
-            title="Download PDF / Print"
-          >
-            <Printer size={18} /> Print / Save PDF
-          </button>
-          <button 
-            className="control-btn close-btn" 
-            onClick={onClose}
-            title="Close Resume"
-          >
-            <X size={18} /> Close
-          </button>
-        </div>
-
-        {/* Card Main Header Area */}
-        <div className="resume-card-header">
-          <h1 className="resume-card-name">Vendi Vardhan Babu</h1>
-          <p className="resume-card-title-subtitle">Master of Computer Applications (MCA)</p>
+        {/* Left Vertical Brand Sidebar */}
+        <div className="resume-sidebar">
+          <div className="sidebar-monogram">V</div>
           
-          <div className="resume-card-contact-grid">
-            <div className="contact-item">
-              <Phone size={14} className="contact-icon-gold" />
-              <span>+91 9100397713</span>
-            </div>
-            <div className="contact-item">
-              <Mail size={14} className="contact-icon-gold" />
+          <div className="sidebar-title-block">
+            <h1 className="sidebar-name">Vardhan Babu</h1>
+            <p className="sidebar-role">MCA Student & Developer</p>
+          </div>
+
+          <div className="sidebar-contact-list">
+            <div className="sidebar-contact-item">
+              <Mail size={15} />
               <span>vardhanbabuvendi@gmail.com</span>
             </div>
-            <div className="contact-item">
-              <MapPin size={14} className="contact-icon-gold" />
-              <span>Nellore, Andhra Pradesh</span>
+            <div className="sidebar-contact-item">
+              <Phone size={15} />
+              <span>+91 9100397713</span>
             </div>
+            <div className="sidebar-contact-item">
+              <MapPin size={15} />
+              <span>AP, India</span>
+            </div>
+          </div>
+
+          <div className="sidebar-actions">
+            <button className="download-pdf-btn" onClick={handlePrint}>
+              <Printer size={16} /> Download Resume (PDF)
+            </button>
+            <button className="sidebar-close-btn" onClick={onClose}>
+              <X size={16} /> Close Preview
+            </button>
           </div>
         </div>
 
-        <div className="resume-card-divider" />
-
-        {/* Card Body - Grid Layout */}
-        <div className="resume-card-body-grid">
-          
-          {/* Left Column: Summary, Skills, Strengths */}
-          <div className="resume-card-col">
-            {/* Professional Summary */}
-            <div className="resume-card-section">
-              <h3 className="card-section-title">Summary</h3>
-              <p className="card-section-text">
-                MCA student with strong skills in React.js, JavaScript, and API integration. Passionate about building responsive web and AI-based applications, seeking an entry-level Software/Frontend Developer role.
-              </p>
+        {/* Right Infographic Core Content */}
+        <div className="resume-infographic-body">
+          {/* Header Dashboard Metrics */}
+          <div className="dashboard-metrics-row">
+            <div className="metric-box">
+              <span className="metric-num">9.02</span>
+              <span className="metric-lbl">MCA CGPA</span>
             </div>
-
-            {/* Technical Skills Segment */}
-            <div className="resume-card-section">
-              <h3 className="card-section-title">Technical Skills</h3>
-              <div className="skills-block-list">
-                <div className="skills-row">
-                  <span className="skills-row-lbl">Languages:</span>
-                  <span className="skills-row-vals">JavaScript, Python, Java, C</span>
-                </div>
-                <div className="skills-row">
-                  <span className="skills-row-lbl">Frontend:</span>
-                  <span className="skills-row-vals">HTML, CSS, React.js</span>
-                </div>
-                <div className="skills-row">
-                  <span className="skills-row-lbl">Backend & APIs:</span>
-                  <span className="skills-row-vals">Node.js (Basics), Express.js, Django, REST APIs</span>
-                </div>
-                <div className="skills-row">
-                  <span className="skills-row-lbl">Databases:</span>
-                  <span className="skills-row-vals">MySQL, MongoDB</span>
-                </div>
-                <div className="skills-row">
-                  <span className="skills-row-lbl">Tools:</span>
-                  <span className="skills-row-vals">Git, GitHub, VS Code, Vite</span>
-                </div>
-              </div>
+            <div className="metric-box">
+              <span className="metric-num">9.28</span>
+              <span className="metric-lbl">B.Sc CGPA</span>
             </div>
-
-            {/* Strengths */}
-            <div className="resume-card-section">
-              <h3 className="card-section-title">Strengths</h3>
-              <ul className="card-bullet-list">
-                <li>Building responsive, high-performance web interfaces</li>
-                <li>Integrating and working with REST APIs effectively</li>
-                <li>Strong debugging and problem-solving skills in React</li>
-                <li>Quick learner and highly adaptable to new frameworks</li>
-              </ul>
+            <div className="metric-box">
+              <span className="metric-num">4+</span>
+              <span className="metric-lbl">Key Projects</span>
             </div>
           </div>
 
-          {/* Right Column: Education & Projects */}
-          <div className="resume-card-col">
-            {/* Education Timeline */}
-            <div className="resume-card-section">
-              <h3 className="card-section-title">Education</h3>
-              <div className="resume-timeline">
-                <div className="timeline-node">
-                  <div className="node-dot" />
-                  <span className="node-time">2024 – 2026 (Pursuing)</span>
-                  <h4 className="node-degree">Master of Computer Applications (MCA)</h4>
-                  <p className="node-inst">Sree Venkateswara College of Engineering</p>
-                  <span className="node-grade">CGPA: 9.02</span>
-                </div>
+          <div className="infographic-main-grid">
+            {/* Column 1: Timelines & Education */}
+            <div className="infographic-col">
+              <div className="infographic-card">
+                <h3 className="infographic-card-title">
+                  <Award size={16} /> Education Path
+                </h3>
                 
-                <div className="timeline-node">
-                  <div className="node-dot" />
-                  <span className="node-time">2021 – 2024</span>
-                  <h4 className="node-degree">Bachelor of Computer Science</h4>
-                  <p className="node-inst">Krishna Chaitanya Degree and PG College</p>
-                  <span className="node-grade">CGPA: 9.28</span>
-                </div>
+                <div className="infographic-timeline">
+                  <div className="timeline-node active">
+                    <div className="node-connector-line" />
+                    <div className="node-glow-point" />
+                    <span className="node-date-tag">2024 – 2026</span>
+                    <h4 className="node-title-text">Master of Computer Applications (MCA)</h4>
+                    <p className="node-desc-text">Sree Venkateswara College of Engineering</p>
+                    <div className="grade-badge">Grade: 9.02 CGPA (Pursuing)</div>
+                  </div>
 
-                <div className="timeline-node">
-                  <div className="node-dot" />
-                  <span className="node-time">2019 – 2021</span>
-                  <h4 className="node-degree">Intermediate (MPC)</h4>
-                  <p className="node-inst">Gurthikonda Sreeramulu Junior College</p>
-                  <span className="node-grade">Percentage: 98.4%</span>
+                  <div className="timeline-node">
+                    <div className="node-connector-line" />
+                    <div className="node-glow-point" />
+                    <span className="node-date-tag">2021 – 2024</span>
+                    <h4 className="node-title-text">Bachelor of Computer Science</h4>
+                    <p className="node-desc-text">Krishna Chaitanya Degree and PG College</p>
+                    <div className="grade-badge">Grade: 9.28 CGPA</div>
+                  </div>
+
+                  <div className="timeline-node">
+                    <div className="node-glow-point" />
+                    <span className="node-date-tag">2019 – 2021</span>
+                    <h4 className="node-title-text">Intermediate - MPC</h4>
+                    <p className="node-desc-text">Gurthikonda Sreeramulu Junior College</p>
+                    <div className="grade-badge">Grade: 98.4% Percentage</div>
+                  </div>
                 </div>
+              </div>
+
+              {/* Professional Summary */}
+              <div className="infographic-card">
+                <h3 className="infographic-card-title">Summary</h3>
+                <p className="summary-para">
+                  Master of Computer Applications student possessing high-level capabilities in React.js, JavaScript, and API integrations. Passionate about engineering highly responsive web applications and AI-driven interfaces, seeking entry-level Software Developer opportunities.
+                </p>
               </div>
             </div>
 
-            {/* Key Projects */}
-            <div className="resume-card-section">
-              <h3 className="card-section-title">Projects</h3>
-              <div className="card-projects-list">
-                <div className="project-item">
-                  <div className="project-heading-row">
-                    <h4 className="project-name">Gemini AI Clone</h4>
-                    <span className="project-tech-badge">React.js | API</span>
+            {/* Column 2: Skills, Projects, & Credentials */}
+            <div className="infographic-col">
+              {/* Technical Skills Infographic */}
+              <div className="infographic-card">
+                <h3 className="infographic-card-title">Expertise</h3>
+                <div className="skills-progress-block">
+                  <div className="progress-bar-group">
+                    <div className="progress-bar-info">
+                      <span>React.js & Frontend</span>
+                      <span>95%</span>
+                    </div>
+                    <div className="progress-bar-container">
+                      <div className="progress-bar-fill" style={{ width: '95%' }} />
+                    </div>
                   </div>
-                  <p className="project-desc">Built AI chatbot with real-time API integrations and optimized user handlers.</p>
-                </div>
-                
-                <div className="project-item">
-                  <div className="project-heading-row">
-                    <h4 className="project-name">YouTube Clone</h4>
-                    <span className="project-tech-badge">React.js | YouTube API</span>
+                  
+                  <div className="progress-bar-group">
+                    <div className="progress-bar-info">
+                      <span>JavaScript / Python</span>
+                      <span>90%</span>
+                    </div>
+                    <div className="progress-bar-container">
+                      <div className="progress-bar-fill" style={{ width: '90%' }} />
+                    </div>
                   </div>
-                  <p className="project-desc">Developed streaming application with full search and reusable state controllers.</p>
-                </div>
 
-                <div className="project-item">
-                  <div className="project-heading-row">
-                    <h4 className="project-name">RAG Document QA</h4>
-                    <span className="project-tech-badge">Django | FAISS</span>
+                  <div className="progress-bar-group">
+                    <div className="progress-bar-info">
+                      <span>Backend & REST APIs</span>
+                      <span>85%</span>
+                    </div>
+                    <div className="progress-bar-container">
+                      <div className="progress-bar-fill" style={{ width: '85%' }} />
+                    </div>
                   </div>
-                  <p className="project-desc">Implemented semantic search using Python and SentenceTransformers vectors.</p>
+
+                  <div className="progress-bar-group">
+                    <div className="progress-bar-info">
+                      <span>Databases (MySQL/MongoDB)</span>
+                      <span>80%</span>
+                    </div>
+                    <div className="progress-bar-container">
+                      <div className="progress-bar-fill" style={{ width: '80%' }} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Projects Grid */}
+              <div className="infographic-card">
+                <h3 className="infographic-card-title">Key Projects</h3>
+                <div className="projects-grid-compact">
+                  <div className="project-compact-item">
+                    <div className="proj-compact-header">
+                      <h4 className="proj-compact-name">Gemini AI Clone</h4>
+                      <span className="proj-compact-tech">React.js</span>
+                    </div>
+                    <p className="proj-compact-desc">Built chatbot interface with dynamic stream API endpoints.</p>
+                  </div>
+
+                  <div className="project-compact-item">
+                    <div className="proj-compact-header">
+                      <h4 className="proj-compact-name">YouTube Clone</h4>
+                      <span className="proj-compact-tech">React.js</span>
+                    </div>
+                    <p className="proj-compact-desc">Integrated search queries and Context API media states.</p>
+                  </div>
+
+                  <div className="project-compact-item">
+                    <div className="proj-compact-header">
+                      <h4 className="proj-compact-name">RAG QA System</h4>
+                      <span className="proj-compact-tech">FAISS</span>
+                    </div>
+                    <p className="proj-compact-desc">Engineered python sentence embedding semantic retrieval layers.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Certifications and Strengths */}
+              <div className="infographic-card">
+                <h3 className="infographic-card-title">Credentials</h3>
+                <div className="credentials-info-list">
+                  <div className="cred-item">
+                    <ChevronRight size={14} className="cred-arrow" />
+                    <span>Full Stack Web Development & Python Bootcamps — ExcelR</span>
+                  </div>
+                  <div className="cred-item">
+                    <ChevronRight size={14} className="cred-arrow" />
+                    <span>JavaScript & Node.js Certifications — DevTown (`16uuFx`)</span>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-
-        {/* Footer verification notes */}
-        <div className="resume-card-footer">
-          <p>Verify ExcelR & DevTown Credential IDs: devtown.in/verify/16uuFx & devtown.in/verify/1G8qVo</p>
         </div>
       </div>
     </div>
