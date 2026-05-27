@@ -1,4 +1,4 @@
-import { X, Printer, Mail, Phone, MapPin, Award, CheckCircle2, ChevronRight } from 'lucide-react';
+import { X, Printer, Mail, Phone, MapPin, Award, ChevronRight } from 'lucide-react';
 import { useEffect } from 'react';
 
 export default function ResumeModal({ isOpen, onClose }) {
