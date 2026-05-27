@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
 
 const logs = [
-  { p: 10, text: 'Resolving React 19 core...' },
-  { p: 30, text: 'Configuring theme CSS tokens...' },
-  { p: 50, text: 'Mapping Vector similarity boards...' },
-  { p: 70, text: 'Connecting Gemini cognitive layer...' },
-  { p: 90, text: 'Calibrating canvas spark fields...' },
-  { p: 100, text: 'System ready.' },
+  { p: 15, text: 'Resolving core assets...' },
+  { p: 40, text: 'Mapping styling tokens...' },
+  { p: 65, text: 'Calibrating neural visual nodes...' },
+  { p: 85, text: 'Integrating cognitive layers...' },
+  { p: 100, text: 'System calibrated.' }
 ];
 
 export default function Preloader({ onComplete }) {
   const [percent, setPercent] = useState(0);
-  const [logText, setLogText] = useState('Booting system files...');
+  const [logText, setLogText] = useState('Initializing files...');
   const [isRevealed, setIsRevealed] = useState(false);
 
   useEffect(() => {
@@ -23,12 +22,12 @@ export default function Preloader({ onComplete }) {
             setIsRevealed(true);
             setTimeout(() => {
               onComplete();
-            }, 800); // Shutter slide curtains duration
-          }, 400);
+            }, 600); // Matches CSS exit transition duration
+          }, 300);
           return 100;
         }
 
-        const nextVal = prev + Math.floor(Math.random() * 5 + 3);
+        const nextVal = prev + Math.floor(Math.random() * 6 + 4);
         const finalVal = Math.min(nextVal, 100);
 
         // Update log text based on loader milestones
@@ -39,69 +38,40 @@ export default function Preloader({ onComplete }) {
 
         return finalVal;
       });
-    }, 60);
+    }, 50);
 
     return () => clearInterval(interval);
   }, [onComplete]);
 
   return (
-    <div className="preloader-shutter-container no-print">
+    <div className={`preloader-soft-overlay no-print ${isRevealed ? 'exit' : ''}`}>
+      {/* Background Matrix Mesh Grid Overlay */}
+      <div className="preloader-soft-grid" />
       
-      {/* Left Shutter Panel */}
-      <div className={`preloader-shutter-left ${isRevealed ? 'exit' : ''}`}>
-        <div className="shutter-grid-overlay" />
-        
-        <div className="shutter-content">
-          {/* Pulsing Single 'V' Monogram with Rotating Ring */}
-          <div className="shutter-monogram">
-            {/* Rotating Outer Dashed Ring */}
-            <div className="shutter-monogram-ring" />
-            <span className="shutter-monogram-text">V</span>
+      {/* Central Soft Diagnostic Orb */}
+      <div className="preloader-soft-core">
+        {/* Soft Glowing Circular Spinner */}
+        <div className="preloader-soft-spinner">
+          <div className="spinner-halo" />
+          <div className="spinner-ring" />
+          <div className="preloader-monogram">V</div>
+        </div>
+
+        {/* Streaming Status Logs */}
+        <div className="preloader-soft-status">
+          <span className="preloader-log-tag">{logText}</span>
+          
+          <div className="preloader-percentage">
+            <span className="percent-num">{percent}</span>
+            <span className="percent-symbol">%</span>
+          </div>
+          
+          {/* Animated loading bar indicator */}
+          <div className="preloader-track-bar">
+            <div className="preloader-fill-bar" style={{ width: `${percent}%` }} />
           </div>
         </div>
       </div>
-
-      {/* Right Shutter Panel */}
-      <div className={`preloader-shutter-right ${isRevealed ? 'exit' : ''}`}>
-        <div className="shutter-grid-overlay" />
-        
-        <div className="shutter-content">
-          {/* Dynamic Name and Percentage reveal */}
-          <div className="shutter-steps-info">
-            <span className="shutter-step-lbl">
-              {logText}
-            </span>
-            
-            {/* Animated Name Reveal */}
-            <h2 className="shutter-brand-name">
-              {percent > 30 ? (
-                <span className="shutter-brand-name gradient">
-                  Vardhan Babu
-                </span>
-              ) : (
-                <span className="shutter-brand-name loading">Initializing...</span>
-              )}
-            </h2>
-
-            {/* Percentage */}
-            <div className="shutter-percentage-text">
-              {percent.toString().padStart(3, '0')}
-              <span className="shutter-percentage-symbol">%</span>
-            </div>
-          </div>
-
-          {/* High-Tech indicator dots */}
-          <div className="shutter-dots-wrapper">
-            {[...Array(6)].map((_, i) => (
-              <div
-                key={i}
-                className={`shutter-dot ${percent >= (i + 1) * 16 ? 'active' : ''}`}
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-      
     </div>
   );
 }
