@@ -84,7 +84,7 @@ export default function Navbar({ theme, toggleTheme }) {
 
           <button 
             className="btn btn-hire-me" 
-            onClick={() => scrollToSection('contact')}
+            onClick={() => window.open("https://mail.google.com/mail/?view=cm&fs=1&to=vardhanbabuvendi@gmail.com&su=Job%20Opportunity%20/%20Collaboration", "_blank")}
           >
             Hire Me
           </button>

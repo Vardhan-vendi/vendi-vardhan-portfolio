@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { ArrowRight, Download, Github, Linkedin, Mail, Phone, Sparkles } from 'lucide-react';
+import ResumeModal from './ResumeModal';
 
 const titles = ['Frontend Developer', 'MCA Student', 'AI Chatbot Builder', 'React.js Specialist'];
 
@@ -7,6 +8,7 @@ export default function Hero() {
   const [titleIndex, setTitleIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   // Typing effect logic
   useEffect(() => {
@@ -33,10 +35,6 @@ export default function Hero() {
 
     return () => clearTimeout(timer);
   }, [displayText, isDeleting, titleIndex]);
-
-  const handlePrint = () => {
-    window.print();
-  };
 
   const scrollToProjects = () => {
     const projSection = document.getElementById('projects');
@@ -79,7 +77,7 @@ export default function Hero() {
             <button className="btn btn-primary" onClick={scrollToProjects}>
               Explore Projects <ArrowRight size={18} />
             </button>
-            <button className="btn btn-secondary" onClick={handlePrint}>
+            <button className="btn btn-secondary" onClick={() => setIsResumeOpen(true)}>
               Get Resume <Download size={18} />
             </button>
           </div>
@@ -166,6 +164,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      {/* Frosted Glass Invitation Resume Card Modal */}
+      <ResumeModal isOpen={isResumeOpen} onClose={() => setIsResumeOpen(false)} />
     </section>
   );
 }
